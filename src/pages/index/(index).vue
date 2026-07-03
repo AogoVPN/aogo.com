@@ -20,7 +20,7 @@
     </div>
 
     <div class="main-content">
-      <div class="slogan text-h3">
+      <div class="slogan text-h5">
         {{ $t("slogan") }}
       </div>
 

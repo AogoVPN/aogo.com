@@ -67,11 +67,7 @@ export const useVpnStore = defineStore("vpn", {
             : `https://${server}/vpn/health`;
           return axios
             .get(url, { timeout: 5000 })
-            .then(() => server)
-            .catch((err) => {
-              console.log(`err: ${err}`);
-              return "";
-            });
+            .then(() => server);
         });
 
         const activeServer = await Promise.any(promises);

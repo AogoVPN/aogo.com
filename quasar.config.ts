@@ -83,18 +83,7 @@ export default defineConfig((ctx) => {
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
       // https: true,
-      open: true,
-      proxy: {
-        "/api/health": {
-          target: "http://localhost:9000",
-          router: (req: { url?: string }) => {
-            const url = new URL(req.url || "", "http://localhost:9000");
-            const server = url.searchParams.get("server");
-            return server ? `https://${server}` : "http://localhost:9000";
-          },
-          changeOrigin: true,
-        },
-      },
+      open: true // opens browser window automatically
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework

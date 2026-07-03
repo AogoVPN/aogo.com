@@ -2,30 +2,26 @@
   <q-page class="vpn-page">
     <div class="header">
       <div class="logo-container">
-        <img
-          alt="Logo"
-          src="~@/assets/logo.png"
-          class="logo"
-        />
+        <img alt="Logo" src="~@/assets/logo.png" class="logo" />
         <span class="logo-text">AogoVPN</span>
       </div>
       <q-select
-      rounded
-      outlined
-      v-model="currentLocale"
-      :options="languageOptions"
-      class="language-select"
-      dark
-      dense
-      emit-value
-      map-options
-      behavior="menu"
-    />
+        rounded
+        outlined
+        v-model="currentLocale"
+        :options="languageOptions"
+        class="language-select"
+        dark
+        dense
+        emit-value
+        map-options
+        behavior="menu"
+      />
     </div>
 
     <div class="main-content">
-      <div class="slogan-section">
-        <h1 class="slogan">{{ $t('slogan') }}</h1>
+      <div class="slogan text-h3">
+        {{ $t("slogan") }}
       </div>
 
       <div class="poster-container">
@@ -88,23 +84,31 @@
       </div>
 
       <div class="social-section">
-        <p class="social-title">{{ $t('socialMediaTitle') }}</p>
+        <p class="social-title">{{ $t("socialMediaTitle") }}</p>
         <div class="social-links">
-          <a href="https://twitter.com/aogovpn" target="_blank" class="social-link social-twitter">
+          <a
+            href="https://twitter.com/aogovpn"
+            target="_blank"
+            class="social-link social-twitter"
+          >
             <span class="social-icon-wrapper">🐦</span>
-            <span class="social-url">{{ $t('twitterLink') }}</span>
+            <span class="social-url">{{ $t("twitterLink") }}</span>
           </a>
 
-          <a href="https://t.me/aogovpn" target="_blank" class="social-link social-telegram">
+          <a
+            href="https://t.me/aogovpn"
+            target="_blank"
+            class="social-link social-telegram"
+          >
             <span class="social-icon-wrapper">💬</span>
-            <span class="social-url">{{ $t('telegramLink') }}</span>
+            <span class="social-url">{{ $t("telegramLink") }}</span>
           </a>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      <p>{{ $t('copyright') }}</p>
+      <p>{{ $t("copyright") }}</p>
     </div>
   </q-page>
 </template>
@@ -141,7 +145,7 @@ const posterRef = ref<HTMLImageElement | null>(null);
 const languageOptions = [
   { label: "🌐 English", value: "en-US" },
   { label: "🌐 简体中文", value: "zh-CN" },
-  { label: "🌐 繁體中文", value: "zh-TW" }
+  { label: "🌐 繁體中文", value: "zh-TW" },
 ];
 
 watch(currentLocale, (newVal) => {
@@ -189,7 +193,9 @@ onMounted(() => {
   });
   window.addEventListener("resize", updateLottieSize);
 
-  Promise.all([vpnStore.getActiveServer(), vpnStore.fetchUpdateInfo()]).catch(() => {});
+  Promise.all([vpnStore.getActiveServer(), vpnStore.fetchUpdateInfo()]).catch(
+    () => {},
+  );
 });
 
 onUnmounted(() => {
@@ -239,7 +245,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 10px;
 }
 
 .slogan-section {
@@ -248,7 +254,8 @@ onUnmounted(() => {
 }
 
 .slogan {
-  font-size: 48px;
+  text-align: center;
+  margin-bottom: 30px;
   font-weight: bold;
   color: #ffffff;
   line-height: 1.2;
@@ -364,12 +371,20 @@ onUnmounted(() => {
 }
 
 .social-twitter {
-  background: linear-gradient(135deg, rgba(29, 155, 240, 0.15), rgba(29, 155, 240, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(29, 155, 240, 0.15),
+    rgba(29, 155, 240, 0.05)
+  );
   border-color: rgba(29, 155, 240, 0.3);
 }
 
 .social-twitter:hover {
-  background: linear-gradient(135deg, rgba(29, 155, 240, 0.3), rgba(29, 155, 240, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(29, 155, 240, 0.3),
+    rgba(29, 155, 240, 0.1)
+  );
 }
 
 .social-twitter .social-icon-wrapper {
@@ -381,12 +396,20 @@ onUnmounted(() => {
 }
 
 .social-telegram {
-  background: linear-gradient(135deg, rgba(0, 136, 204, 0.15), rgba(0, 136, 204, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(0, 136, 204, 0.15),
+    rgba(0, 136, 204, 0.05)
+  );
   border-color: rgba(0, 136, 204, 0.3);
 }
 
 .social-telegram:hover {
-  background: linear-gradient(135deg, rgba(0, 136, 204, 0.3), rgba(0, 136, 204, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(0, 136, 204, 0.3),
+    rgba(0, 136, 204, 0.1)
+  );
 }
 
 .social-telegram .social-icon-wrapper {
@@ -398,12 +421,20 @@ onUnmounted(() => {
 }
 
 .social-website {
-  background: linear-gradient(135deg, rgba(100, 200, 255, 0.15), rgba(100, 200, 255, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(100, 200, 255, 0.15),
+    rgba(100, 200, 255, 0.05)
+  );
   border-color: rgba(100, 200, 255, 0.3);
 }
 
 .social-website:hover {
-  background: linear-gradient(135deg, rgba(100, 200, 255, 0.3), rgba(100, 200, 255, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(100, 200, 255, 0.3),
+    rgba(100, 200, 255, 0.1)
+  );
 }
 
 .social-website .social-icon-wrapper {

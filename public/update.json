@@ -7,7 +7,7 @@
   },
   "macos": {
     "tag_name": "v0.9.1",
-    "download_url": " packages/macos/aogo-vpn-0.9.1-macos.dmg",
+    "download_url": "packages/macos/aogo-vpn-0.9.1-macos.dmg",
     "store_url": "",
     "body": "- 0.9.1\n- bug修复\n- 功能更新"
   },

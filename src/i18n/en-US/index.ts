@@ -14,4 +14,5 @@ export default {
   downloadAndroid: "Android",
   downloadWindows: "Windows",
   downloadMac: "macOS",
+  downloadIos: "iOS",
 };

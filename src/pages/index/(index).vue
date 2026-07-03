@@ -62,6 +62,16 @@
           :loading="vpnStore.isChecking"
         />
         <q-btn
+          class="download-btn download-ios"
+          size="lg"
+          :label="$t('downloadIos')"
+          no-caps
+          icon="phone_iphone"
+          @click="downloadIos"
+          :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
+          :loading="vpnStore.isChecking"
+        />
+        <q-btn
           class="download-btn download-windows"
           size="lg"
           :label="$t('downloadWindows')"
@@ -78,16 +88,6 @@
           no-caps
           icon="apple"
           @click="downloadMac"
-          :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
-          :loading="vpnStore.isChecking"
-        />
-        <q-btn
-          class="download-btn download-ios"
-          size="lg"
-          :label="$t('downloadIos')"
-          no-caps
-          icon="phone_iphone"
-          @click="downloadIos"
           :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
           :loading="vpnStore.isChecking"
         />
@@ -197,16 +197,9 @@ const downloadMac = () => {
 };
 
 const downloadIos = () => {
-  const url = vpnStore.getDownloadUrl("ios");
-  if (!url) return;
-
   // iOS OTA installation requires the itms-services URL scheme pointing to a manifest plist
-  const itmsUrl = `itms-services://?action=download-manifest&url=${encodeURIComponent(
-    url,
-  )}`;
-
   // Use location.href to trigger the installation on iOS devices
-  window.location.href = itmsUrl;
+  window.location.href = 'itms-services://?action=download-manifest&url=https://aogo.dpdns.org/ios.plist';
 };
 
 onMounted(() => {

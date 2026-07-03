@@ -66,7 +66,7 @@
           size="lg"
           :label="$t('downloadIos')"
           no-caps
-          icon="phone_iphone"
+          icon="iphone"
           @click="downloadIos"
           :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
           :loading="vpnStore.isChecking"
@@ -199,7 +199,8 @@ const downloadMac = () => {
 const downloadIos = () => {
   // iOS OTA installation requires the itms-services URL scheme pointing to a manifest plist
   // Use location.href to trigger the installation on iOS devices
-  window.location.href = 'itms-services://?action=download-manifest&url=https://aogo.dpdns.org/ios.plist';
+  window.location.href =
+    "itms-services://?action=download-manifest&url=https://aogo.dpdns.org/ios.plist";
 };
 
 onMounted(() => {
@@ -318,6 +319,12 @@ onUnmounted(() => {
 .download-android {
   background: linear-gradient(135deg, #3ddc84 0%, #4caf50 100%) !important;
   box-shadow: 0 12px 36px rgba(76, 175, 80, 0.6);
+}
+
+.download-ios {
+  background: linear-gradient(135deg, #d4d4d8 0%, #a1a1aa 100%) !important;
+  color: #000000 !important;
+  box-shadow: 0 12px 36px rgba(161, 161, 170, 0.6);
 }
 
 .download-windows {

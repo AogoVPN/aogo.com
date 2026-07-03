@@ -39,6 +39,7 @@
     "@quasar/app-vite": "^3.0.0-rc.3",
     "@types/node": "^22.19.11",
     "autoprefixer": "^10.4.27",
+    "esbuild": "^0.28.1",
     "oxfmt": "^0.x",
     "oxlint": "^1.x",
     "oxlint-tsgolint": "^0.x",

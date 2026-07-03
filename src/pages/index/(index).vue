@@ -66,7 +66,7 @@
           size="lg"
           :label="$t('downloadIos')"
           no-caps
-          icon="iphone"
+          icon="phone_iphone"
           @click="downloadIos"
           :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
           :loading="vpnStore.isChecking"

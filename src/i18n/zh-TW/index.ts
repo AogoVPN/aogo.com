@@ -1,0 +1,17 @@
+export default {
+  download: "下載APP",
+  copyright: "Copyright 2024 AogoVPN. All rights reserved.",
+  language: "語言",
+  english: "English",
+  chinese: "繁體中文",
+  slogan: "永遠能連上的梯子",
+  socialMediaTitle: "在社交媒體隨時找到我們（搜索AogoVPN）",
+  twitterLink: "twitter.com/aogovpn",
+  telegramTitle: "加入官方Telegram群組",
+  telegramLink: "t.me/aogovpn",
+  websiteTitle: "AogoVPN 官方網站",
+  websiteLink: "aogo.com",
+  downloadAndroid: "Android",
+  downloadWindows: "Windows",
+  downloadMac: "macOS",
+};

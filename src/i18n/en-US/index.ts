@@ -1,0 +1,17 @@
+export default {
+  download: "Download APP",
+  copyright: "Copyright 2024 AogoVPN. All rights reserved.",
+  language: "Language",
+  english: "English",
+  chinese: "中文",
+  slogan: "Always Connected VPN",
+  socialMediaTitle: "Find us on social media (Search AogoVPN)",
+  twitterLink: "twitter.com/aogovpn",
+  telegramTitle: "Join official Telegram group",
+  telegramLink: "t.me/aogovpn",
+  websiteTitle: "AogoVPN Official Website",
+  websiteLink: "aogo.com",
+  downloadAndroid: "Android",
+  downloadWindows: "Windows",
+  downloadMac: "macOS",
+};

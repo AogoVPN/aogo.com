@@ -81,6 +81,16 @@
           :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
           :loading="vpnStore.isChecking"
         />
+        <q-btn
+          class="download-btn download-ios"
+          size="lg"
+          :label="$t('downloadIos')"
+          no-caps
+          icon="phone_iphone"
+          @click="downloadIos"
+          :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
+          :loading="vpnStore.isChecking"
+        />
       </div>
 
       <div class="social-section">
@@ -186,6 +196,19 @@ const downloadMac = () => {
   }
 };
 
+const downloadIos = () => {
+  const url = vpnStore.getDownloadUrl("ios");
+  if (!url) return;
+
+  // iOS OTA installation requires the itms-services URL scheme pointing to a manifest plist
+  const itmsUrl = `itms-services://?action=download-manifest&url=${encodeURIComponent(
+    url,
+  )}`;
+
+  // Use location.href to trigger the installation on iOS devices
+  window.location.href = itmsUrl;
+};
+
 onMounted(() => {
   locale.value = currentLocale.value;
   nextTick(() => {
@@ -248,14 +271,9 @@ onUnmounted(() => {
   padding: 10px;
 }
 
-.slogan-section {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .slogan {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-weight: bold;
   color: #ffffff;
   line-height: 1.2;

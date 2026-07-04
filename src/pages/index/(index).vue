@@ -139,10 +139,6 @@ const getBrowserLanguage = (): string => {
     return browserLang;
   }
 
-  if (langPrefix === "zh") {
-    return "zh-CN";
-  }
-
   return "zh-CN";
 };
 
@@ -571,41 +567,45 @@ onUnmounted(() => {
   margin: 0;
 }
 
-@media (max-width: 600px) {
-  .header {
-    padding: 15px 20px;
-  }
+.xs .header {
+  padding: 15px 20px;
+}
 
-  .logo {
-    height: 40px;
-  }
+.xs .logo {
+  height: 40px;
+}
 
-  .slogan {
-    font-size: 32px;
-  }
+.xs .slogan {
+  font-size: 32px;
+}
 
-  .poster-container {
-    margin-bottom: 10px;
-  }
+.xs .poster-container {
+  margin-bottom: 10px;
+}
 
-  .poster {
-    border-radius: 0px;
-  }
+.xs .poster {
+  border-radius: 0px;
+}
 
-  .download-btn {
-    padding: 10px 30px;
-    font-size: 16px;
-  }
+.xs .download-btn {
+  padding: 10px 30px;
+  font-size: 16px;
+  width: 180px;
+  min-width: 180px;
+}
 
-  .download-section {
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
+.xs .download-section {
+  gap: 15px;
+  margin-bottom: 30px;
+}
 
-  .social-link {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
+.xs .social-link {
+  width: 56px;
+  height: 56px;
+  font-size: 11px;
+}
+
+.xs .social-icon-wrapper {
+  font-size: 20px;
 }
 </style>

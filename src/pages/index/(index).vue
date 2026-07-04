@@ -95,12 +95,12 @@
         <p class="social-title">{{ $t("socialMediaTitle") }}</p>
         <div class="social-links">
           <a
-            href="https://twitter.com/aogovpn"
+            href="https://x.com/aogovpn"
             target="_blank"
-            class="social-link social-twitter"
+            class="social-link social-x"
           >
-            <span class="social-icon-wrapper">🐦</span>
-            <span class="social-url">{{ $t("twitterLink") }}</span>
+            <q-icon name="fa-brands fa-x-twitter" class="social-icon" />
+            <span class="social-url">{{ $t("xLink") }}</span>
           </a>
 
           <a
@@ -108,7 +108,7 @@
             target="_blank"
             class="social-link social-telegram"
           >
-            <span class="social-icon-wrapper">💬</span>
+            <q-icon name="fab fa-telegram" class="social-icon" />
             <span class="social-url">{{ $t("telegramLink") }}</span>
           </a>
         </div>
@@ -284,13 +284,13 @@ onUnmounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 20px 20px;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .logo {
@@ -427,7 +427,7 @@ onUnmounted(() => {
 
 .social-section {
   text-align: center;
-  width: 100%;
+  width: 80%;
   max-width: 360px;
 }
 
@@ -464,19 +464,12 @@ onUnmounted(() => {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
-.social-icon-wrapper {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-right: 12px;
+.social-icon {
   font-size: 18px;
-  transition: all 0.3s ease;
+  margin-right: 10px;
 }
 
-.social-twitter {
+.social-x {
   background: linear-gradient(
     135deg,
     rgba(29, 155, 240, 0.15),
@@ -485,20 +478,12 @@ onUnmounted(() => {
   border-color: rgba(29, 155, 240, 0.3);
 }
 
-.social-twitter:hover {
+.social-x:hover {
   background: linear-gradient(
     135deg,
     rgba(29, 155, 240, 0.3),
     rgba(29, 155, 240, 0.1)
   );
-}
-
-.social-twitter .social-icon-wrapper {
-  background: rgba(29, 155, 240, 0.2);
-}
-
-.social-twitter:hover .social-icon-wrapper {
-  background: rgba(29, 155, 240, 0.4);
 }
 
 .social-telegram {
@@ -518,14 +503,6 @@ onUnmounted(() => {
   );
 }
 
-.social-telegram .social-icon-wrapper {
-  background: rgba(0, 136, 204, 0.2);
-}
-
-.social-telegram:hover .social-icon-wrapper {
-  background: rgba(0, 136, 204, 0.4);
-}
-
 .social-website {
   background: linear-gradient(
     135deg,
@@ -541,14 +518,6 @@ onUnmounted(() => {
     rgba(100, 200, 255, 0.3),
     rgba(100, 200, 255, 0.1)
   );
-}
-
-.social-website .social-icon-wrapper {
-  background: rgba(100, 200, 255, 0.2);
-}
-
-.social-website:hover .social-icon-wrapper {
-  background: rgba(100, 200, 255, 0.4);
 }
 
 .social-url {
@@ -605,7 +574,8 @@ onUnmounted(() => {
   font-size: 11px;
 }
 
-.xs .social-icon-wrapper {
-  font-size: 20px;
+.xs .social-icon {
+  width: 18px;
+  height: 18px;
 }
 </style>

@@ -6,7 +6,7 @@ export default {
   chinese: "中文",
   slogan: "Always Connected VPN",
   socialMediaTitle: "Find us on social media (Search AogoVPN)",
-  twitterLink: "twitter.com/aogovpn",
+  xLink: "x.com/aogovpn",
   telegramTitle: "Join official Telegram group",
   telegramLink: "t.me/aogovpn",
   websiteTitle: "AogoVPN Official Website",

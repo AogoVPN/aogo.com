@@ -16,5 +16,6 @@ export default {
   downloadMac: "macOS",
   downloadIos: "iOS",
   iosInstallHint:
-    'iOS: Tap "📱 iOS" to install directly. If prompted "Untrusted Developer" after installation, go to "Settings → General → VPN & Device Management" to trust the developer before opening.',
+    'iOS: Tap "📱iOS" to install directly. If prompted "Untrusted Developer" after installation, go to "Settings → General → VPN & Device Management" to trust the developer before opening.',
+  wechatTip: 'Please tap the top right corner, select "Open in Browser"',
 };

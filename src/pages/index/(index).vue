@@ -1,5 +1,8 @@
 <template>
   <q-page class="vpn-page">
+    <div v-if="isWeChatBrowser" class="wechat-tip">
+      <span>{{ $t("wechatTip") }}</span>
+    </div>
     <div class="header">
       <div class="logo-container">
         <img alt="Logo" src="~@/assets/logo.png" class="logo" />
@@ -147,6 +150,14 @@ const getBrowserLanguage = (): string => {
 const currentLocale = ref(getBrowserLanguage());
 const lottieSize = ref(160);
 const posterRef = ref<HTMLImageElement | null>(null);
+
+const isWeChatBrowser = computed(() => {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return (
+    userAgent.includes("micromessenger") &&
+    !userAgent.includes("wechatdevtools")
+  );
+});
 
 const getOS = (): string => {
   const userAgent = navigator.userAgent.toLowerCase();
@@ -308,6 +319,32 @@ onUnmounted(() => {
 
 .language-select {
   min-width: 120px;
+}
+
+.wechat-tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #07c160 0%, #10b981 100%);
+  color: #ffffff;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .main-content {

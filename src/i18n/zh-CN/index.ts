@@ -15,4 +15,6 @@ export default {
   downloadWindows: "Windows",
   downloadMac: "macOS",
   downloadIos: "iOS",
+  iosInstallHint:
+    "iOS 点「📱 iOS」直接安装。安装后若提示「未受信任」，请到「设置 → 通用 → VPN与设备管理」信任开发者后再打开。",
 };

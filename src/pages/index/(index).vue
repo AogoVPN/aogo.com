@@ -51,6 +51,9 @@
       </div>
 
       <div class="download-section">
+        <p v-show="currentOS === 'ios'" class="ios-hint">
+          {{ $t("iosInstallHint") }}
+        </p>
         <q-btn
           v-for="btn in sortedDownloadButtons"
           :key="btn.os"
@@ -133,7 +136,6 @@ const vpnStore = useVpnStore();
 const getBrowserLanguage = (): string => {
   const browserLang = navigator.language || "zh-CN";
   const availableLangs = ["en-US", "zh-CN", "zh-TW"];
-  const langPrefix = browserLang.split("-")[0];
 
   if (availableLangs.includes(browserLang)) {
     return browserLang;
@@ -359,6 +361,15 @@ onUnmounted(() => {
   align-items: center;
   gap: 20px;
   margin-bottom: 40px;
+}
+
+.ios-hint {
+  font-size: 14px;
+  color: #ffffff;
+  text-align: center;
+  max-width: 320px;
+  opacity: 0.85;
+  line-height: 1.6;
 }
 
 .download-btn {

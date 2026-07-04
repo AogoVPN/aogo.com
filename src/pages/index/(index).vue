@@ -52,45 +52,43 @@
 
       <div class="download-section">
         <q-btn
-          class="download-btn download-android"
+          v-for="btn in sortedDownloadButtons"
+          :key="btn.os"
+          v-show="
+            btn.os === 'ios'
+              ? currentOS === 'ios'
+              : btn.os === currentOS || showAllDownloads
+          "
+          class="download-btn"
+          :class="btn.class"
           size="lg"
-          :label="$t('downloadAndroid')"
+          :label="$t(btn.label)"
           no-caps
-          icon="android"
-          @click="downloadAndroid"
+          :icon="btn.icon"
+          @click="downloadActions[btn.os]"
           :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
           :loading="vpnStore.isChecking"
         />
-        <q-btn
-          class="download-btn download-ios"
-          size="lg"
-          :label="$t('downloadIos')"
-          no-caps
-          icon="phone_iphone"
-          @click="downloadIos"
-          :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
-          :loading="vpnStore.isChecking"
-        />
-        <q-btn
-          class="download-btn download-windows"
-          size="lg"
-          :label="$t('downloadWindows')"
-          no-caps
-          icon="windows"
-          @click="downloadWindows"
-          :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
-          :loading="vpnStore.isChecking"
-        />
-        <q-btn
-          class="download-btn download-mac"
-          size="lg"
-          :label="$t('downloadMac')"
-          no-caps
-          icon="apple"
-          @click="downloadMac"
-          :disabled="!vpnStore.hasActiveServer || vpnStore.isChecking"
-          :loading="vpnStore.isChecking"
-        />
+
+        <button
+          class="expand-arrow"
+          @click="showAllDownloads = !showAllDownloads"
+        >
+          <svg
+            class="arrow-icon"
+            :class="{ rotated: showAllDownloads }"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m6 9 6 6 6-6" />
+            <path d="m6 15 6 6 6-6" />
+          </svg>
+        </button>
       </div>
 
       <div class="social-section">
@@ -124,7 +122,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, watch, onMounted, onUnmounted, nextTick, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import switchJson from "@/assets/switch.json";
 import { useVpnStore } from "@/stores/store";
@@ -151,6 +149,57 @@ const getBrowserLanguage = (): string => {
 const currentLocale = ref(getBrowserLanguage());
 const lottieSize = ref(160);
 const posterRef = ref<HTMLImageElement | null>(null);
+
+const getOS = (): string => {
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (
+    userAgent.includes("iphone") ||
+    userAgent.includes("ipad") ||
+    userAgent.includes("ipod")
+  ) {
+    return "ios";
+  } else if (userAgent.includes("android")) {
+    return "android";
+  } else if (userAgent.includes("windows")) {
+    return "windows";
+  } else if (userAgent.includes("mac os") || userAgent.includes("macos")) {
+    return "mac";
+  }
+  return "windows";
+};
+
+const currentOS = ref(getOS());
+const showAllDownloads = ref(false);
+
+const downloadButtons = [
+  {
+    os: "android",
+    label: "downloadAndroid",
+    icon: "android",
+    class: "download-android",
+  },
+  {
+    os: "ios",
+    label: "downloadIos",
+    icon: "phone_iphone",
+    class: "download-ios",
+  },
+  {
+    os: "windows",
+    label: "downloadWindows",
+    icon: "windows",
+    class: "download-windows",
+  },
+  { os: "mac", label: "downloadMac", icon: "apple", class: "download-mac" },
+];
+
+const sortedDownloadButtons = computed(() => {
+  return [...downloadButtons].sort((a, b) => {
+    if (a.os === currentOS.value) return -1;
+    if (b.os === currentOS.value) return 1;
+    return 0;
+  });
+});
 
 const languageOptions = [
   { label: "🌐 English", value: "en-US" },
@@ -201,6 +250,13 @@ const downloadIos = () => {
   // Use location.href to trigger the installation on iOS devices
   window.location.href =
     "itms-services://?action=download-manifest&url=https://aogo.dpdns.org/ios.plist";
+};
+
+const downloadActions: Record<string, () => void> = {
+  android: downloadAndroid,
+  ios: downloadIos,
+  windows: downloadWindows,
+  mac: downloadMac,
 };
 
 onMounted(() => {
@@ -303,9 +359,9 @@ onUnmounted(() => {
 
 .download-section {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
   margin-bottom: 40px;
 }
 
@@ -314,6 +370,9 @@ onUnmounted(() => {
   font-size: 20px;
   border-radius: 32px;
   color: #ffffff;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  width: 220px;
 }
 
 .download-android {
@@ -337,10 +396,43 @@ onUnmounted(() => {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8);
 }
 
+.expand-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-icon {
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  animation: bounce 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.rotated {
+  transform: rotate(180deg);
+  animation: none;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
 .social-section {
   text-align: center;
   width: 100%;
-  max-width: 450px;
+  max-width: 360px;
 }
 
 .social-title {

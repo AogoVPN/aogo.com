@@ -322,17 +322,12 @@ onUnmounted(() => {
 }
 
 .wechat-tip {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   background: linear-gradient(135deg, #07c160 0%, #10b981 100%);
   color: #ffffff;
   padding: 12px 20px;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  z-index: 1000;
   animation: slideDown 0.3s ease;
 }
 

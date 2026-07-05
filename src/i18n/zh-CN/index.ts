@@ -18,4 +18,5 @@ export default {
   iosInstallHint:
     "iOS 点「📱iOS」直接安装。安装后若提示「未受信任」，请到「设置 → 通用 → VPN与设备管理」信任开发者后再打开。",
   wechatTip: "请点击右上角，选择「在浏览器中打开」",
+  iosInProgress: "iOS 版本正在加紧制作中，敬请期待！",
 };

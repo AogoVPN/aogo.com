@@ -124,6 +124,14 @@
     <div class="footer">
       <p>{{ $t("copyright") }}</p>
     </div>
+
+    <q-dialog v-model="showIosDialog" class="ios-dialog">
+      <q-card class="ios-dialog-card">
+        <q-card-section class="text-center q-pa-md ios-dialog-title">
+          {{ $t("iosInProgress") }}
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -216,6 +224,8 @@ const languageOptions = [
   { label: "🌐 繁體中文", value: "zh-TW" },
 ];
 
+const showIosDialog = ref(false);
+
 watch(currentLocale, (newVal) => {
   locale.value = newVal;
 });
@@ -240,6 +250,15 @@ const downloadAndroid = () => {
   }
 };
 
+const downloadIos = () => {
+  // iOS OTA installation requires the itms-services URL scheme pointing to a manifest plist
+  // Use location.href to trigger the installation on iOS devices
+  // window.location.href =
+  //   "itms-services://?action=download-manifest&url=https://aogo.dpdns.org/ios.plist";
+
+  showIosDialog.value = true;
+};
+
 const downloadWindows = () => {
   const url = vpnStore.getDownloadUrl("windows");
   if (url) {
@@ -252,13 +271,6 @@ const downloadMac = () => {
   if (url) {
     window.open(url, "_blank");
   }
-};
-
-const downloadIos = () => {
-  // iOS OTA installation requires the itms-services URL scheme pointing to a manifest plist
-  // Use location.href to trigger the installation on iOS devices
-  window.location.href =
-    "itms-services://?action=download-manifest&url=https://aogo.dpdns.org/ios.plist";
 };
 
 const downloadActions: Record<string, () => void> = {
@@ -551,23 +563,6 @@ onUnmounted(() => {
   );
 }
 
-.social-website {
-  background: linear-gradient(
-    135deg,
-    rgba(100, 200, 255, 0.15),
-    rgba(100, 200, 255, 0.05)
-  );
-  border-color: rgba(100, 200, 255, 0.3);
-}
-
-.social-website:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(100, 200, 255, 0.3),
-    rgba(100, 200, 255, 0.1)
-  );
-}
-
 .social-url {
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -582,6 +577,33 @@ onUnmounted(() => {
 
 .footer p {
   margin: 0;
+}
+
+.ios-dialog {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.ios-dialog-card {
+  background: linear-gradient(
+    145deg,
+    rgba(26, 26, 46, 0.98),
+    rgba(22, 33, 62, 0.98)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  max-width: 320px;
+  overflow: hidden;
+}
+
+.ios-dialog-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px;
 }
 
 .xs .header {

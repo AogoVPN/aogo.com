@@ -1,5 +1,6 @@
 
 update-url: https://aogo.dpdns.org/update.json
+payment-url: https://aogo.dpdns.org/payment.json
 nodes-url: https://aogo.dpdns.org/config.yaml
 nodes:
   0:

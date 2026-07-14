@@ -1,0 +1,18 @@
+{
+  "alipay": [],
+  "wechat": [],
+  "validate": [
+    "支付成功",
+    "交易成功",
+    "Payment successful",
+    "Transaction successful"
+  ],
+  "universal": ["生月"],
+  "price": {
+    "1w": 18,
+    "1m": 38,
+    "3m": 98,
+    "6m": 168,
+    "1y": 298
+  }
+}

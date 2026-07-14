@@ -1,6 +1,4 @@
 {
-  "alipay": [],
-  "wechat": [],
   "validate": [
     "支付成功",
     "交易成功",
@@ -14,5 +12,7 @@
     "3m": 98,
     "6m": 168,
     "1y": 298
-  }
+  },
+  "alipay": "https://aogo.dpdns.org/alipay{{1}}.jpg",
+  "wechat": "https://aogo.dpdns.org/wechat{{1}}.jpg"
 }

@@ -1,12 +1,6 @@
 {
-  "validate": [
-    "支付成功",
-    "交易成功",
-    "Payment successful",
-    "Transaction successful"
-  ],
-  "alipay": ["tzh"],
-  "wechat": ["tzh"],
+  "alipay": ["tzh", "生月"],
+  "wechat": ["tzh", "生月"],
   "price": {
     "1w": 18,
     "1m": 38,

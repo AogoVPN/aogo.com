@@ -1,8 +1,7 @@
 {
-  "alipay": ["tzh", "生月"],
-  "wechat": ["tzh", "生月"],
+  "alipay": ["tzh"],
+  "wechat": ["tzh"],
   "price": {
-    "1d": 1,
     "1w": 18,
     "1m": 38,
     "3m": 98,

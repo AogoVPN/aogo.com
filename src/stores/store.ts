@@ -1,6 +1,7 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
 import axios from "axios";
 import { load } from "js-yaml";
+import configRaw from "../assets/config.yaml?raw";
 
 interface PlatformUpdateInfo {
   tag_name: string;
@@ -34,9 +35,7 @@ export const useVpnStore = defineStore("vpn", {
   actions: {
     async fetchServerList(): Promise<string[]> {
       try {
-        const response = await fetch("/config.yaml");
-        const text = await response.text();
-        const config = load(text) as { nodes: Record<string, string[]> };
+        const config = load(configRaw) as { nodes: Record<string, string[]> };
         this.servers = config?.nodes?.[0] || [];
         return this.servers;
       } catch {

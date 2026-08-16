@@ -3,18 +3,18 @@
     "tag_name": "v26.8.4",
     "download_url": "packages/android/aogo-vpn-26.8.4-android.apk",
     "store_url": "",
-    "body": "- 26.8.4\n- bug修复\n- 功能更新"
+    "body": "26.8.4\n- bug修复\n- 功能更新"
   },
   "macos": {
     "tag_name": "v26.8.4",
     "download_url": "packages/macos/aogo-vpn-26.8.4-macos.dmg",
     "store_url": "",
-    "body": "- 26.8.4\n- bug修复\n- 功能更新"
+    "body": "26.8.4\n- bug修复\n- 功能更新"
   },
   "windows": {
     "tag_name": "v26.8.4",
     "download_url": "packages/windows/aogo-vpn-26.8.4-windows.exe",
     "store_url": "",
-    "body": "- 26.8.4\n- bug修复\n- 功能更新"
+    "body": "26.8.4\n- bug修复\n- 功能更新"
   }
 }
